@@ -16,4 +16,4 @@ jobs:
     - name: Print the Cloud Formation Linter Version & run Linter.
       run: |
         cfn-lint --version
-        cfn-lint -t ./tarea_template_1.yml
+        cfn-lint -t ../tarea_template_1.yml

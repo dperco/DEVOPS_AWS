@@ -9,23 +9,27 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
-
+    - uses: actions/setup-python@v2
     - name: Configure AWS Credentials
       uses: aws-actions/configure-aws-credentials@v1
       with:
          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
          aws-region: es-east-1
+         
+    # Instala Ruby 3.0.2
+    - name: Install Ruby 3.0.2
+      run: |
+        sudo apt-get update
+        sudo apt-get install -y ruby-full
+        ruby --version
 
+    # Actualiza pip
     - name: Upgrade pip
       run: |
         python -m pip install --upgrade pip
 
-    - name: Install Ruby-full
-      run: |
-        sudo apt-get update
-        sudo apt-get install -y ruby-full
-
+    # Instala cfn-nag localmente
     - name: Install cfn-nag gem
       run: |
         gem install cfn-nag --user-install
@@ -34,11 +38,13 @@ jobs:
     - name: Setup Python
       uses: actions/setup-python@v2
       with:
-        python-version: 3.10.11
+        python-version: 3.10.11  # Especifica la versión de Python que estás utilizando
+
+    # Resto de tus pasos para configurar y ejecutar taskcat
 
     - name: Install dependencies and run taskcat tests
       run: |
-        pip install -r requirements.txt
+        pip install -r requirements.txt  # Si tienes un archivo de requisitos
         taskcat test run
 
     - name: Run taskcat test run

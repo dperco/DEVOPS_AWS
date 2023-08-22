@@ -1,3 +1,4 @@
+
 name: Integration tests
 
 on: [push]
@@ -15,20 +16,22 @@ jobs:
          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
          aws-region: es-east-1
-    - name: Setup Python
-      uses: actions/setup-python@v2
-      with:
-        python-version: 3.x  # Especifica la versión de Python que estás utilizando
 
     - name: Upgrade pip
       run: |
         python -m pip install --upgrade pip
+
+    - name: Setup Python
+      uses: actions/setup-python@v2
+      with:
+        python-version: 3.x  # Especifica la versión de Python que estás utilizando
 
     # Resto de tus pasos para configurar y ejecutar taskcat
     - name: Install dependencies and run taskcat tests
       run: |
         pip install -r requirements.txt  # Si tienes un archivo de requisitos
         taskcat test run
+
     - name: Run taskcat test run
       uses: ShahradR/action-taskcat@v1
       with:

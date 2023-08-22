@@ -30,4 +30,4 @@ jobs:
 
       - run: |
           eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
-          cfn_nag_scan --input-path tarea_template_1.yaml
+          cfn_nag_scan --input-path ./tarea_template_1.yaml

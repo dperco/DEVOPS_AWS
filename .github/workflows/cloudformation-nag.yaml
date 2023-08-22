@@ -1,0 +1,29 @@
+name: Cloudformation nag
+on:
+  push:
+    branches:
+      - feature-add-cfn-nag
+
+jobs:
+  cloudformation-nag:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Install Homebrew
+        run: |
+          sh -c "$(curl -fsSL https://raw.githubusercontent.com/Linuxbrew/install/master/install.sh)"
+          test -d /home/linuxbrew/.linuxbrew && eval $(/home/linuxbrew/.linuxbrew/bin/brew shellenv)
+
+      - name: Install Ruby and cfn-nag
+        run: |
+          sudo apt-get update
+          sudo apt-get install ruby-full
+          sudo gem install cfn-nag
+
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Install Ruby and cfn-nag (again?)
+        run: |
+          eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+          brew install ruby brew-gem
+          gem install --user-install cfn-nag

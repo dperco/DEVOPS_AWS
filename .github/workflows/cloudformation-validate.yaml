@@ -28,7 +28,10 @@ jobs:
     
     - name: Install cfn-nag gem
       run: |
-          sudo gem install cfn-nag
+       sudo apt-get update
+       sudo apt-get install -y ruby-full
+       gem install cfn-nag --user-install
+
     # Resto de tus pasos para configurar y ejecutar taskcat
     - name: Install dependencies and run taskcat tests
       run: |

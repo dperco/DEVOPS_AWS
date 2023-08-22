@@ -27,3 +27,7 @@ jobs:
           eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
           brew install ruby brew-gem
           gem install --user-install cfn-nag
+
+      - run: |
+          eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+          cfn_nag_scan --input-path tarea_template_1.yaml

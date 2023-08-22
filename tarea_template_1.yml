@@ -1,10 +1,10 @@
 AWSTemplateFormatVersion: '2010-09-09'
 Parameters:
-  mykeypair:
-    Type: AWS::EC2::KeyPair::KeyName
-  SecurityGroupIp:
-    Type: String
-    Default: 0.0.0.0/0
+  # mykeypair:
+  #   Type: AWS::EC2::KeyPair::KeyName
+  # SecurityGroupIp:
+  #   Type: String
+  #   Default: 0.0.0.0/0
   InstanceTypeParameter:
     Type: String
     Default: t2.micro

@@ -1,8 +1,8 @@
 name: Cloudformation nag
-on: [push]
-#   push:
-#     branches:
-#       - main
+on: 
+  push:
+    branches:
+      - feature-add-cfn-nag
 
 jobs:
   cloudformation-nag:
